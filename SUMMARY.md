@@ -1,4 +1,8 @@
 # Table of contents
 
-* [Initial page](README.md)
+* [Javascript](README.md)
+
+## Javascript란?
+
+* [자바스크립트의 역사](javascript/history.md)
 
