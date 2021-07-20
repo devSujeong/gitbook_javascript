@@ -4,5 +4,5 @@
 
 ## Javascript란?
 
-* [Programming](javascript/programming.md)
+* [자바스크립트의 역사](javascript/history.md)
 
