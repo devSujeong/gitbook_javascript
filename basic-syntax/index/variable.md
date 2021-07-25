@@ -40,7 +40,7 @@ hoisting은 변수 선언이 **스코프**의 선두로 끌어 올려진 것처�
 
 ## Variable assignment
 
-assignment와 declaration은 실행 시기가 다릅니다. assignment는 runtime에서 실행되고, declaration은 before runtime에 실행되므로 아래 예제에서 score는 80이 됩니다.
+assignment와 declaration은 실행 시기가 다릅니다. assignment는 runtime에서 실행되고, declaration은 before runtime\(hoisting\)에 실행되므로 아래 예제에서 score는 80이 됩니다.
 
 ```javascript
 score = 80;
