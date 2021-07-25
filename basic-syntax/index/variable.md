@@ -154,6 +154,13 @@ global variable은 전역 [스코프](../../javascript/what-javascript/scope.md)
 * 불변을 의미하는 게 아니라 재할당을 금지. 
 * 원시 값을 할당한 경우 변수 값을 변경할 수 없습니다.
 * 즉, 참조값을 할당한 경우에는 값을 변경할 수 있습니다.
+* 기존 for문을 제외하고 for문에서 const 사용 가능
+
+```javascript
+for (const prop in obj) {
+  console.log(prop)
+}
+```
 {% endtab %}
 {% endtabs %}
 
