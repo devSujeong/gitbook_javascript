@@ -78,7 +78,7 @@ global variable은 전역 [스코프](../../javascript/what-javascript/scope.md)
 
 3. 스코프 체인 상에서 종점에 존재
 
-   전역 스코프는 스코프 체인을 탈 때 가장 마지막에 검색되는 것이므로 전역 변수의 검색 속도가 가장 느립니다. 
+   전역 스코프는 스코프 체인을 탈 때 가장 마지막에 검색되는 것이므로 전역 변수의 검색 속도가 가장 느립니다.
 
 4. Namespace의 오염
 
@@ -97,7 +97,7 @@ global variable은 전역 [스코프](../../javascript/what-javascript/scope.md)
    ```javascript
    var MYAPP = {};
 
-   MYAPP.name = 'kim'; 
+   MYAPP.name = 'kim';
    ```
 
 3. module pattern
@@ -107,7 +107,7 @@ global variable은 전역 [스코프](../../javascript/what-javascript/scope.md)
    ```javascript
    var Counter = (function() {
        var num = 0; // private
-    
+
        return {
            increase() {
                return ++num;
@@ -161,6 +161,4 @@ for (const prop in obj) {
 ```
 {% endtab %}
 {% endtabs %}
-
-
 
