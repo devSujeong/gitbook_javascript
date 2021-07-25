@@ -12,5 +12,8 @@
 
 * [Index](basic-syntax/index/README.md)
   * [Variable](basic-syntax/index/variable.md)
-  * [Untitled](basic-syntax/index/untitled.md)
+
+## Libraries
+
+* [Redux](libraries/redux.md)
 
