@@ -20,25 +20,23 @@ var result = 10 + 20; // (2)
 result // (3)
 ```
 
-* \(1\)의 `result`는 variable name \(변수이름\). 저 행위는 variable declaration\(변수 선언\).  + undefined initialization\(변수 초기화\).
+* \(1\)의 `result`는 variable name \(변수이름\). var로 변수를 선언할 때는 variable declaration\(변수 선언\).  + undefined initialization\(변수 초기화\) 같이 일어남.
 * \(2\)는 variable assignment\(변수 할당\)
 * \(3\)은 reference \(참조\)
 
 ## Variable declaration
 
-변수를 생성하는 것입니다. 자바스크립트에게 자신의 존재를 알리는 것이며 구체적으로는 메모리 공간을 allocate\(확보\)하고 변수 이름과 확보된 메모리 공간의 주소를 name binding\(연결\)해서 값을 저장할 수 있게 준비하는 것입니다. 이 메모리 공간은 release\(해제\)되기 전까지 보호됩니다.
-
-variable declaration은 `var`, `let`, `const` 와 같은 키워드로 구현합니다. 아직 assignment를 하지 않아서 값이 비어있을 것 같지만 javascript는 암묵적으로 undefined value로 initialization 되어 있습니다.
+변수를 생성하는 것입니다. 자바스크립트에게 자신의 존재를 알리는 것이며 구체적으로는 메모리 공간을 allocate\(확보\)하고 변수 이름과 확보된 메모리 공간의 주소를 name binding\(연결\)해서 값을 저장할 수 있게 준비하는 것입니다. 이 메모리 공간은 release\(해제\)되기 전까지 보호됩니다. variable declaration은 `var`, `let`, `const` 와 같은 키워드로 구현합니다.
 
 {% hint style="warning" %}
 ### Reference Error
 
-variable declaration을 하지 않은 identifier에 접근하면 Reference Error가 납니다. javascript execution context\(실행 컨텍스트\)에 등록되지 않았으니 찾을 수가 없는 것이죠.
+variable declaration을 한 번도 하지 않은 identifier에 접근하면 Reference Error가 납니다. javascript execution context\(실행 컨텍스트\)에 등록되지 않았으니 찾을 수가 없는 것이죠.
 {% endhint %}
 
 ### Variable Hoisting
 
-hoisting은 변수 선언이 **스코프**의 선두로 끌어 올려진 것처럼 동작하는 자바스크립트 고유의 특징입니다. 자바스크립트 엔진은 runtime\(소스코드가 실행되는 시점\) 이전에 소스코드를 평가하는 과정을 거칩니다. 이때 모든 선언문들은 먼저 실행\(hoisting\)이 되고, 그 이후에 코드가 한 줄씩 순차적으로 실행됩니다. variable declaration 전에 variable reference를 하여도 오류가 나지 않는 것은 variable hosting을 할 때, variable declaration과 variable initialization을 같이 한다는 증거입니다.
+hoisting은 변수 선언이 **스코프**의 선두로 끌어 올려진 것처럼 동작하는 자바스크립트 고유의 특징입니다. 자바스크립트 엔진은 runtime\(소스코드가 실행되는 시점\) 이전에 소스코드를 평가하는 과정을 거칩니다. 이때 모든 선언문들은 먼저 실행\(hoisting\)이 되고, 그 이후에 코드가 한 줄씩 순차적으로 실행됩니다. variable reference를 먼저 하고 나중에 variable declaration을 하여도 오류가 나지 않는 것은 variable hosting을 할 때, variable declaration과 variable initialization을 같이 한다는 증거입니다. 그러나 let, const는 declaration과 initialization을 같이 하지 않습니다.
 
 ## Variable assignment
 
