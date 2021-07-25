@@ -40,7 +40,7 @@ hoisting은 변수 선언이 **스코프**의 선두로 끌어 올려진 것처�
 
 ## Variable assignment
 
-assignment와 declaration은 실행 시기가 다릅니다. assignment는 runtime에서 실행되고, declaration은 before runtime에 실행되므로 아래 예제에서 score는 80이 됩니다.
+assignment와 declaration은 실행 시기가 다릅니다. assignment는 runtime에서 실행되고, declaration은 before runtime\(hoisting\)에 실행되므로 아래 예제에서 score는 80이 됩니다.
 
 ```javascript
 score = 80;
@@ -125,7 +125,7 @@ global variable은 전역 [스코프](../../javascript/what-javascript/scope.md)
 
 ## var vs let vs const
 
-세 변수의 특징과 차이점을 정리합니다. es6+ 이상의 자바스크립트 개발을 할 때는 더 이상 var를 사용하지 않으 의도적인 재할당을 방지하기 위해 먼저 const로 변수를 정의하고, 이후 재할당이 필요한 경우에만 let을 사용하되, 변수의 scope를 최대한으로 제한합니다.
+세 변수의 특징과 차이점을 정리합니다. es6+ 이상의 자바스크립트 개발을 할 때는 더 이상 var를 사용하지 않고 의도적인 재할당을 방지하기 위해 먼저 const로 변수를 정의하고, 이후 재할당이 필요한 경우에만 let을 사용하되, 변수의 scope를 최대한으로 제한합니다.
 
 {% tabs %}
 {% tab title="var" %}
