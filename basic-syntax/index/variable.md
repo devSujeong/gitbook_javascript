@@ -64,7 +64,7 @@ console.log(score) // 80
 
 ## variable life cycle
 
-global variable은 전역 [스코프](../../javascript/what-javascript/scope.md)를 가지기 때문에 application의 종료와 함께 끝납니다. 즉, garbage collector의 수집 대상이 끝까지 되지 못합니다. local variable은 함수의 실행과 함께 시작되어 함수가 종료되면 끝이 납니다.
+global variable은 전역 [스코프](../../environment/background/scope.md)를 가지기 때문에 application의 종료와 함께 끝납니다. 즉, garbage collector의 수집 대상이 끝까지 되지 못합니다. local variable은 함수의 실행과 함께 시작되어 함수가 종료되면 끝이 납니다.
 
 ### global variable's problem
 

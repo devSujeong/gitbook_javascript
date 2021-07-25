@@ -2,11 +2,11 @@
 
 * [Javascript](README.md)
 
-## Javascript란?
+## environment
 
-* [자바스크립트란?](javascript/what-javascript/README.md)
-  * [자바스크립트의 역사](javascript/what-javascript/history.md)
-  * [Scope](javascript/what-javascript/scope.md)
+* [background](environment/background/README.md)
+  * [자바스크립트의 역사](environment/background/history.md)
+  * [Scope](environment/background/scope.md)
 
 ## basic Syntax
 
