@@ -182,6 +182,7 @@ export default configureStore;
 ```
 
 ```javascript
+// _app.jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
