@@ -12,6 +12,14 @@
 
 * [Index](basic-syntax/index/README.md)
   * [Variable](basic-syntax/index/variable.md)
+  * [Data type](basic-syntax/index/data-type/README.md)
+    * [Number](basic-syntax/index/data-type/number.md)
+    * [string](basic-syntax/index/data-type/string.md)
+    * [boolean](basic-syntax/index/data-type/boolean.md)
+    * [undefiend vs null](basic-syntax/index/data-type/undefiend-vs-null.md)
+    * [symbol](basic-syntax/index/data-type/symbol.md)
+    * [Object](basic-syntax/index/data-type/object.md)
+    * [Object: Array](basic-syntax/index/data-type/object-array.md)
 
 ## Libraries
 
