@@ -20,6 +20,7 @@
     * [symbol](basic-syntax/index/data-type/symbol.md)
     * [Object](basic-syntax/index/data-type/object.md)
     * [Object: Array](basic-syntax/index/data-type/object-array.md)
+  * [Operator](basic-syntax/index/operator.md)
 
 ## Libraries
 
