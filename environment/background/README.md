@@ -2,7 +2,7 @@
 
 ## Javascript?
 
-javascript의 표준인 ECMAScript가 기본 뼈대를 이루고 브라우저가 별도로 지원하는 ClientSide Web API도 함께 포함됩니다. 
+javascript의 표준인 ECMAScript가 기본 뼈대를 이루고 브라우저가 별도로 지원하는 ClientSide Web API도 함께 포함됩니다.
 
 {% hint style="info" %}
 \*\*\*\*[**ClientSide Web API**](https://developer.mozilla.org/ko/docs/Web/API)\*\*\*\*

@@ -16,7 +16,7 @@ Mocha -&gt; LiveScript -&gt; JavaScript
 
 ## 1999, Ajax
 
-### Before Ajax Communication 
+### Before Ajax Communication
 
 ![](../../.gitbook/assets/group-1.jpg)
 
