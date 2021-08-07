@@ -36,7 +36,7 @@ variable declaration을 한 번도 하지 않은 identifier에 접근하면 Refe
 
 ### Variable Hoisting
 
-hoisting은 변수 선언이 **스코프**의 선두로 끌어 올려진 것처럼 동작하는 자바스크립트 고유의 특징입니다. 자바스크립트 엔진은 runtime\(소스코드가 실행되는 시점\) 이전에 소스코드를 평가하는 과정을 거칩니다. 이때 모든 선언문들은 먼저 실행\(hoisting\)이 되고, 그 이후에 코드가 한 줄씩 순차적으로 실행됩니다. variable reference를 먼저 하고 나중에 variable declaration을 하여도 오류가 나지 않는 것은 variable hosting을 할 때, variable declaration과 variable initialization을 같이 한다는 증거입니다. 그러나 let, const는 declaration과 initialization을 같이 하지 않습니다.
+hoisting은 변수 선언이 **스코프**의 선두로 끌어 올려진 것처럼 동작하는 자바스크립트 고유의 특징입니다. 자바스크립트 엔진은 runtime\(소스코드가 실행되는 시점\) 이전에 소스코드를 평가하는 과정을 거칩니다. 이때 모든 선언문들은 먼저 실행\(hoisting\)이 되고, 그 이후에 코드가 한 줄 씩 순차적으로 실행됩니다. variable reference를 먼저 하고 나중에 variable declaration을 하여도 오류가 나지 않는 것은 variable hosting을 할 때, variable declaration과 variable initialization을 같이 한다는 증거입니다. 그러나 let, const는 declaration과 initialization을 같이 하지 않습니다.
 
 ## Variable assignment
 

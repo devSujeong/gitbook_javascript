@@ -19,7 +19,7 @@ scope chain이란 scope가 계층적으로 연결된 것을 이릅니다. 모든
 
 > 전역 스코프 &gt; outer function &gt; nested function
 
-javascript는 변수를 참조할 때 변수를 참조하는 코드의 스코프에서 시작하여 상위 스코프 방향으로 이동하며 선언된 변수를 찾습니다.\(identifier resuolution\) 즉, 상위 스코프에서 선언한 변수는 하위 스코프에서도 사용 가능합니다.
+javascript는 변수를 참조할 때 변수를 참조하는 코드의 스코프에서 시작하여 상위 스코프 방향으로 이동하며 선언된 변수를 찾습니다.\(identifier resolution\) 즉, 상위 스코프에서 선언한 변수는 하위 스코프에서도 사용 가능합니다.
 
 ### scope를 결정하는 방식
 

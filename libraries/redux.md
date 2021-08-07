@@ -112,7 +112,6 @@ reducer는 꼭 불변성을 지켜야 합니다. 그래야 redux가 이전 상�
    // to log results (for example: reportWebVitals(console.log))
    // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
    reportWebVitals();
-
    ```
 
 ## [Redux-toolkit](https://redux-toolkit.js.org/usage/usage-guide)
@@ -131,7 +130,7 @@ reducer는 꼭 불변성을 지켜야 합니다. 그래야 redux가 이전 상�
        branchManage: branchManagementReducer,
      },
      devTools: process.env.NEXT_PUBLIC_ENV_NODE !== 'production',
-   }); 
+   });
    ```
 
 2. detailed reducer definition
@@ -166,10 +165,9 @@ reducer는 꼭 불변성을 지켜야 합니다. 그래야 redux가 이전 상�
 
 3. dispatch
 
-   ```typescript
+   \`\`\`typescript
 
-4. 5. 6. 
-## [Redux-persist](https://github.com/rt2zz/redux-persist)
+4. 1. 1. \*\*\*\*[**Redux-persist**](https://github.com/rt2zz/redux-persist)\*\*\*\*
 
 redux-persist는 browser storage에도 저장하여 새로고침하여도 데이터가 유실되지 않는 라이브러리 입니다.
 
