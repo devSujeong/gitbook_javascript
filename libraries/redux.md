@@ -112,6 +112,7 @@ reducer는 꼭 불변성을 지켜야 합니다. 그래야 redux가 이전 상�
    // to log results (for example: reportWebVitals(console.log))
    // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
    reportWebVitals();
+
    ```
 
 ## [Redux-toolkit](https://redux-toolkit.js.org/usage/usage-guide)
@@ -166,8 +167,6 @@ reducer는 꼭 불변성을 지켜야 합니다. 그래야 redux가 이전 상�
 3. dispatch
 
    ```typescript
-
-   ```
 
 4. 5. 6. 
 ## [Redux-persist](https://github.com/rt2zz/redux-persist)
@@ -253,7 +252,6 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
 ```
 
 ## redux-toolkit
