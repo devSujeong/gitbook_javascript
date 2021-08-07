@@ -17,7 +17,7 @@ redux는 기본적으로 flux 패턴을 따릅니다.
 ### Installation
 
 ```bash
-yarn add redux react-redux redux-devtools-extension
+yarn add redux react-redux redux-devtools-extension @reduxjs/toolkit
 ```
 
 ### Reducer definition
@@ -27,29 +27,24 @@ reducer는 꼭 불변성을 지켜야 합니다. 그래야 redux가 이전 상�
 1. Root reducer definition
 
    ```javascript
-   // store/index.js
-
-   import { combineReducers } from 'redux';
-   import counter from './counter';
-   import todos from './todos';
-   import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+   // libraries
+   import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
    import { composeWithDevTools } from 'redux-devtools-extension';
 
+   // customs
+   import branchManagementReducer from 'modules/branch/reducer/branchManagement.reducer';
+
    const rootReducer = combineReducers({
-     counter,
-     todos
+     branchManage: branchManagementReducer,
    });
 
-   const middlewares = []; // 미들웨어들을 넣으면 된다.
-
+   const middleware = applyMiddleware();
    const enhancer =
-     process.env.NEXT_PUBLIC_NODE_ENV === 'production'
-       ? compose(applyMiddleware(...middlewares))
-       : composeWithDevTools(applyMiddleware(...middlewares));
+     process.env.NEXT_PUBLIC_ENV_NODE === 'production'
+       ? compose(middleware)
+       : composeWithDevTools(middleware);
 
-   const store = createStore(rootReducer, enhancer);
-
-   export default store;
+   export const store = createStore(rootReducer, enhancer);
    ```
 
 2. detailed reducer definition
@@ -117,8 +112,63 @@ reducer는 꼭 불변성을 지켜야 합니다. 그래야 redux가 이전 상�
    // to log results (for example: reportWebVitals(console.log))
    // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
    reportWebVitals();
+
    ```
 
+## [Redux-toolkit](https://redux-toolkit.js.org/usage/usage-guide)
+
+1. Root reducer definition
+
+   ```javascript
+   // libraries
+   import { configureStore } from '@reduxjs/toolkit';
+
+   // customs
+   import branchManagementReducer from 'modules/branch/reducer/branchManagement.reducer';
+
+   export const store = configureStore({
+     reducer: {
+       branchManage: branchManagementReducer,
+     },
+     devTools: process.env.NEXT_PUBLIC_ENV_NODE !== 'production',
+   }); 
+   ```
+
+2. detailed reducer definition
+
+   ```typescript
+   // libraries
+   import { createSlice } from '@reduxjs/toolkit';
+
+   interface State {
+     brandInfoDetail: {
+       [key: string]: unknown;
+     };
+   }
+
+   const initialState: State = {
+     brandInfoDetail: {},
+   };
+
+   const slice = createSlice({
+     name: 'branchManagement',
+     initialState,
+     reducers: {
+       updateBranchInfoDetail(state, action) {
+         state.brandInfoDetail = action.payload;
+       },
+     },
+   });
+
+   export const { updateBranchInfoDetail } = slice.actions;
+   export default slice.reducer;
+   ```
+
+3. dispatch
+
+   ```typescript
+
+4. 5. 6. 
 ## [Redux-persist](https://github.com/rt2zz/redux-persist)
 
 redux-persist는 browser storage에도 저장하여 새로고침하여도 데이터가 유실되지 않는 라이브러리 입니다.
