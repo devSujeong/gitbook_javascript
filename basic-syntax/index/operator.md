@@ -150,5 +150,59 @@ num **= 2 // 25
 15. 할당연산자
 16. ,
 
+## 단축 평가
+
+### 논리연산자를 사용한 단축 평가
+
+논리 연산자는 피연산자를 타입 변환하지 않고 그대로 반환합니다. 따라서 논리식에서 평가되는 값에 따라 무언가를 실행시킬때 간단하게 사용하기 좋습니다.
+
+| 단축 평가 표현식 | 평가 결과 |
+| :--- | :--- |
+| true \|\| anything | true |
+| false \|\| anything | anything |
+| true && anything | anything |
+| false && anything | false |
+
+```javascript
+if(!done) message = '미완료';
+// 위 식을 아래와 같이 간단히 할 수 있습니다.
+message = done || '미완료';
+```
+
+### optional chaning operator
+
+객체가 가리키기를 기대하는 변수 값이 null이거나 undefined라면 type error가 나면서 프로그램이 강제종료됩니다. 이를 막기 위해서 해당 객체가 null, undefined가 아닐 때 실행하도록 조치를 취합니다.
+
+```javascript
+let elem = null;
+let value = elem && elem.value; // -> null 
+```
+
+이를 더 쉽게 할 수 있는 연산자가 옵셔널 체이닝 연산자 입니다. 좌항의 피연산자가 null 또는 undefined인 경우 undefined를 반환하고 그렇지 않으면 우항의 프로퍼티 참조를 이어갑니다. 논리 연산자 &&를 사용할 때는 좌항이 falsy값으로 평가되면 그 값이 사용되는 사이드 이펙트가 있는데, 옵셔널 체이닝 연산자는 오직 null, undefined만 바라봅니다.
+
+```javascript
+let elem = null;
+
+let value = elem?.value;
+
+```
+
+### nullish coalescing 연산자
+
+함수 매개 변수의 기본 값을 정할 때 기존에 \|\|로 체킹했지만 이도 마찬가지로 falsy 값들에 대한 side effect가 있었습니다. 이 현상도 null 병합 연산자로 null, undefined 값 일 때에만 우항을 참조하도록 쉽게 해결 할 수 있습니다.
+
+```javascript
+function getStringLength(str) {
+    str = str || '';
+    return str.length;
+}
+```
+
+```javascript
+let foo = null ?? 'default string'; // -> 'default string'
+```
+
+### 
+
 
 
