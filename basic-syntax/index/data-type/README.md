@@ -59,3 +59,85 @@ typeof 연산자를 활용합니다.
 typeof "테스트" // string
 ```
 
+## 타입 변환
+
+### explicit coercion\(, type casting\)
+
+명시적 타입 변환은 개발자가 의도적으로 값의 타입을 변환하는 것입니다.
+
+#### 문자열 타입으로 변환
+
+* String 생성자 함수를 new 연산자 없이 호출
+* Object.prototype.toString 표준 빌트인 메서드 사용
+* 문자열 연결 연산자 사
+
+```javascript
+String(1); // -> "1"
+NaN.toString; // -> "NaN"
+true + ''; // -> "true"
+```
+
+#### 숫자 타입으로 변환
+
+* Number 생성자 함수를 new연산자 없이 호출
+* parseInt, parseFloat 함수 사용\(문자열만 가능함\)
+* + unary arithmetic operator
+* \\* arithmetic operator
+
+```javascript
+Number(true); // -> 1
+parseInt('-1'); // -> -1
++'10.43' // -> 10.43
+true * 1; // -> 1
+```
+
+#### boolean 타입으로 변환
+
+* Boolean 생성자 함수를 new 연산자 없이 호출
+* ! 부정 논리 연산자 두 번 사용
+
+```javascript
+Boolean('x'); // -> true
+!![]; // -> true
+```
+
+### implicit coercion\(, type coercion\)
+
+암묵적 타입 변환은 자바스크립트 엔진에 의해 자동으로 변환하는 것입니다. 원시 타입 중 하나로 타입을 자동 변환합니다.
+
+#### 문자열 타입으로 변환
+
+```javascript
+1 + '2' // -> "12" +는 문자열 연 연산자
+```
+
+#### 숫자 타입으로 변환
+
+```javascript
+// Arithmetic operator
+1 - '1' // -> 0
+1 * '2' // -> 2
+1 / 'abc' // -> NaN
+
+// comparison operator
+'1' > 0 // -> true
+
+// + unary operator
++'' // -> 0
++true // -> 1
++null // -> 0
+```
+
+#### 불리언 타입으로 변환
+
+조건식의 평가 결과는 불리언 타입으로 암묵적 변환됩니다. falsy값 외의 모든 값은 true로 변환됩니다.
+
+* false
+* undefined
+* null
+* 0, -0
+* NaN
+* ''
+
+
+
