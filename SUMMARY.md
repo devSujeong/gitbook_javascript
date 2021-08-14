@@ -22,6 +22,7 @@
     * [Object: Array](basic-syntax/index/data-type/object-array.md)
   * [Operator](basic-syntax/index/operator.md)
   * [Control flow statement](basic-syntax/index/control-flow-statement.md)
+  * [Object](basic-syntax/index/object.md)
 
 ## Libraries
 
