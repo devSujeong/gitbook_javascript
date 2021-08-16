@@ -119,3 +119,59 @@ const obj = {
 consol.log(obj); // {prop-1: 1, prop-2: 2, prop-3: 3}
 ```
 
+## Property attribute
+
+property attribute를 이해하기 위해서는 먼저 internal slot과 internal method를 알아야 합니다. 이들은 ECMAScript에서 사용하는 pseudo property와 pseudo method입니다. 자바스크립트 엔진의 내부 로직이므로 원칙적으로 개발자가 직접 접근하거나 호출할 수 있는 방법을 제공하지 않지만 일부는 제공합니다.
+
+자바스크립트 엔진은 프로퍼티를 생성할 때 프로퍼티의 상태를 나타내는 프로퍼티 어트리뷰트를 기본 값으로 자동 정의합니다. 
+
+* property value
+* property writable\(갱신 가능 여부\)
+* property enumerable\(열거 가능 여부\)
+* property configurable\(재정의 가능 여부\)
+
+```javascript
+const person = {
+    name: 'kim'
+};
+
+Object.getOwnPropertyDescriptor(person, 'name'); // property attribute 확인하는 방법
+// 이 메소드는 propertyDescriptor 객체를 반환함.
+
+
+Object.getOwnPropertyDescriptors(person); // 모든 프로퍼티의 attribute 정보를 확
+```
+
+### Property 종류
+
+* data property: 키와 값으로 구성된 일반적인 프로퍼티
+  * \[\[Value\]\] : 프로퍼티 키를 통해 프로퍼티 값에 접근하면 반환되는 값. 프로퍼티 키를 통해 프로퍼티 값을 변경하면 \[\[Value\]\]에 값을 재할당하고 이 때 프로퍼티가 없으면 프로퍼티를 동적 생성하여 값을 저장함.
+  * \[\[Writable\]\] : 프로퍼티 값의 변경 가능 여부 boolean. false면 읽기 전용
+  * \[\[Enumerable\]\] : 프로퍼티의 열거 가능 여부 boolean. false면 반복문 사용 안됨
+  * \[\[Configurable\]\] : 프로퍼티의 재정의 가능 여부 boolean. false면 프로퍼티 삭제, 값 변경 금지. 단 \[\[writable\]\]이 true면 \[\[value\]\] 변경, \[\[writable\]\] false로 변경 허용.
+* accessor property\(접근자 프로퍼티\): 자체적인 값이 없고 다른 데이터 프로퍼티의 값을 읽거나 저장할 때 호출되는  접근자 함수로 구성된 프로퍼티
+  * \[\[Get\]\] : 접근자 프로퍼티를 통해 프로퍼티의 값을 읽을 때 호출되는 접근자 함수. getter 함수가 호출되고 그 결과가 프로퍼티의 값으로 반환됨.
+  * \[\[Set\]\] : 접근자 프로퍼티를 통해 데이터 프로퍼티의 값을 저장할 때 호출되는 접근자 함수.
+  * \[\[Enumerable\]\] : 데이터 프로퍼티와 같음
+  * \[\[Configurable\]\] : 데이터 프로퍼티와 같음
+
+```javascript
+const person = {
+    // data property
+    firstNam: 'sujeong',
+    lastName: 'kim',
+    
+    // accessor property
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+    set fullName(name) {
+        [this.firstName, this.lastName] = name.split(' ');
+    }
+};
+```
+
+### Property definition
+
+property attribute를 명시적으로 정의하거나 기존 프로퍼티의 프로퍼티 어트리뷰트를 재정의.
+
