@@ -151,5 +151,27 @@ Object.getOwnPropertyDescriptors(person); // 모든 프로퍼티의 attribute �
   * \[\[Configurable\]\] : 프로퍼티의 재정의 가능 여부 boolean. false면 프로퍼티 삭제, 값 변경 금지. 단 \[\[writable\]\]이 true면 \[\[value\]\] 변경, \[\[writable\]\] false로 변경 허용.
 * accessor property\(접근자 프로퍼티\): 자체적인 값이 없고 다른 데이터 프로퍼티의 값을 읽거나 저장할 때 호출되는  접근자 함수로 구성된 프로퍼티
   * \[\[Get\]\] : 접근자 프로퍼티를 통해 프로퍼티의 값을 읽을 때 호출되는 접근자 함수. getter 함수가 호출되고 그 결과가 프로퍼티의 값으로 반환됨.
-  * \[\[
+  * \[\[Set\]\] : 접근자 프로퍼티를 통해 데이터 프로퍼티의 값을 저장할 때 호출되는 접근자 함수.
+  * \[\[Enumerable\]\] : 데이터 프로퍼티와 같음
+  * \[\[Configurable\]\] : 데이터 프로퍼티와 같음
+
+```javascript
+const person = {
+    // data property
+    firstNam: 'sujeong',
+    lastName: 'kim',
+    
+    // accessor property
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+    set fullName(name) {
+        [this.firstName, this.lastName] = name.split(' ');
+    }
+};
+```
+
+### Property definition
+
+property attribute를 명시적으로 정의하거나 기존 프로퍼티의 프로퍼티 어트리뷰트를 재정의.
 
