@@ -173,5 +173,152 @@ const person = {
 
 ### Property definition
 
-property attribute를 명시적으로 정의하거나 기존 프로퍼티의 프로퍼티 어트리뷰트를 재정의.
+property attribute를 명시적으로 정의하거나 기존 프로퍼티의 프로퍼티 어트리뷰트를 재정의. 이를 통해 객체의 프로퍼티가 어떻게 동작해야 하는지 명확히 알 수 있습니다. defineProperty 메소드를 사용하며, 일부 생략하고 만들면 기본 값이 적용됩니다. 여러 개를 한 번에 정의하려면 Object.definedProperties 메소드를 사용합니다.
+
+```javascript
+const person = {};
+
+Object.defineProperty(person, 'firstName', {
+    value: 'sujeong',
+    writable: true,
+    enumerable: true,
+    configurable: true
+});
+
+Object.defineProperties(person, {
+    firstName: {
+        value: 'sujeong',
+        writable: true,
+        enumerable: true,
+        configurable: true    
+    },
+    lastName: {
+        value: 'kim',
+        writable: true,
+        enumerable: true,
+        configurable: true    
+    },
+    fullName: {
+        get() {
+            return `${this.firstName} ${this.lastName}`;
+        }
+    }
+});
+```
+
+## Objct 변경 금지
+
+객체는 변경 가능한 값이므로 변경을 방지하기 위한 메서드가 따로 존재합니다. 그러나 이들은 전부 얕은 변경 방지입니다.
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">&#xAD6C;&#xBD84;</th>
+      <th style="text-align:left">&#xBA54;&#xC11C;</th>
+      <th style="text-align:left">
+        <p>&#xD504;&#xB85C;&#xD37C;&#xD2F0;</p>
+        <p>&#xCD94;&#xAC00;</p>
+      </th>
+      <th style="text-align:left">
+        <p>&#xD504;&#xB85C;&#xD37C;&#xD2F0;</p>
+        <p>&#xC0AD;</p>
+      </th>
+      <th style="text-align:left">
+        <p>&#xD504;&#xB85C;&#xD37C;&#xD2F0;</p>
+        <p>&#xAC12; &#xC77D;&#xAE30;</p>
+      </th>
+      <th style="text-align:left">
+        <p>&#xD504;&#xB85C;&#xD37C;&#xD2F0;</p>
+        <p>&#xAC12; &#xC4F0;&#xAE30;</p>
+      </th>
+      <th style="text-align:left">
+        <p>&#xD504;&#xB85C;&#xD37C;&#xD2F0;</p>
+        <p>attribute&#xC7AC;&#xC815;</p>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">&#xAC1D;&#xCCB4; &#xD655;&#xC7A5; &#xAE08;</td>
+      <td style="text-align:left">Object.preventExtensions</td>
+      <td style="text-align:left">X</td>
+      <td style="text-align:left">O</td>
+      <td style="text-align:left">O</td>
+      <td style="text-align:left">O</td>
+      <td style="text-align:left">O</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">&#xAC1D;&#xCCB4; &#xBC00;&#xBD09;</td>
+      <td style="text-align:left">Object.seal</td>
+      <td style="text-align:left">X</td>
+      <td style="text-align:left">X</td>
+      <td style="text-align:left">O</td>
+      <td style="text-align:left">O</td>
+      <td style="text-align:left">X</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">&#xAC1D;&#xCCB4; &#xB3D9;&#xACB0;</td>
+      <td style="text-align:left">Object.freeze</td>
+      <td style="text-align:left">X</td>
+      <td style="text-align:left">X</td>
+      <td style="text-align:left">O</td>
+      <td style="text-align:left">X</td>
+      <td style="text-align:left">X</td>
+    </tr>
+  </tbody>
+</table>
+
+### 객체 확장 금지
+
+프로퍼티 추가가 금지됩니다. 즉 프로퍼티 동적 추가, Object.defineProperty 금지. 확장 가능 여부는 Object.isExtensible로 확인 가능합니다.
+
+```javascript
+const person = {name: 'kim'};
+console.log(Object.isExtensible(person)); // true
+
+Object.preventExtensions(person)); // 확장 금지
+
+console.log(Object.isExtensible(person)); // false
+```
+
+### 객체 밀봉
+
+밀봉된 객체는 읽기와 쓰기만 가능합니다.
+
+```javascript
+const person = {name: 'kim'};
+console.log(Object.isSealed(person)); // false
+
+Object.seal(person)); // 확장 금지
+
+console.log(Object.isSealed(person)); // true
+```
+
+### 객체 동결
+
+읽기만 가능한 객체입니다.
+
+```javascript
+const person = {name: 'kim'};
+console.log(Object.isFrozen(person)); // false
+
+Object.freeze(person)); // 확장 금지
+
+console.log(Object.isFrozen(person)); // true
+```
+
+### 불변객체
+
+재귀함수를 사용하여 깊은 동결을 이룹니다.
+
+```javascript
+function deepFreeze(target){
+    if(target && typeof target === 'object' && !Objct.isFrozen(target)) {
+        Object.freeze(target);
+        Object.keys(target).forEach(key => deepFreeze(target[key]));
+    }
+    
+    return target;
+}
+```
 
