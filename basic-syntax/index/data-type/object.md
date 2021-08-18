@@ -34,8 +34,45 @@ const person = {
 ### Object creation methods
 
 * Object literal
+
+  간편하지만 인스턴스를 만들 수 없어서 단 하나의 객체만 생성할 수 있습니다.
+
 * Object constructor function
+
+  여기서 Object는 생성자 함수\(constuctor\)입니다. 생성자 함수는 new 연산자와 함께 instance객체를 만듭니다.
+
+  ```javascript
+  const person = new Object();
+  ```
+
 * constructor function
+
+  인스턴스를 생성하기 위한 템플릿처럼 생성자 함수를 사용하여 프로퍼티 구조가 동일한 객체 여러 개를 간편하게 생성할 수 있습니다. 일반 함수와 동일하게 만들고 new 연산자와 함께 호출하면 생성자 함수가 됩니다.
+
+  ```javascript
+  // constructor
+  function Circle(radius) {
+      this.radius = radius;
+      this.getDiameter = function() {
+          return 2 * this.radius;
+      }
+  }
+
+  const circle1 = new Circle(5);
+  ```
+
+  1. 인스턴스 생성과 this 바인딩
+
+     암묵적으로 빈 객체를 만들고 인스턴스는 this에 바인딩됩니다. javascript 영역.
+
+  2. 인스턴스 초기화
+
+     this에 바인딩되어 있는 인스턴스를 초기화합니다. 개발자 영역.
+
+  3. 인스턴스 반환
+
+     완성된 인스턴스가 바인딩된 this가 암묵적으로 반환됩니다. 만일 명시적으로 다른 것을 return문에 적으면 명시한 객체가 반환됩니다. \(원시 값 반환하면 원래대로 진행됨\)
+
 * Object.create method
 * Class
 
@@ -206,7 +243,7 @@ Object.defineProperties(person, {
 });
 ```
 
-## Objct 변경 금지
+## Object 변경 금지
 
 객체는 변경 가능한 값이므로 변경을 방지하기 위한 메서드가 따로 존재합니다. 그러나 이들은 전부 얕은 변경 방지입니다.
 
@@ -321,4 +358,6 @@ function deepFreeze(target){
     return target;
 }
 ```
+
+
 
