@@ -202,7 +202,9 @@ function getStringLength(str) {
 let foo = null ?? 'default string'; // -> 'default string'
 ```
 
-### 
+## new operator
+
+함수와 함께 쓰여 \[\[constructor\]\] internal method호출함.
 
 
 
