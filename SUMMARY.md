@@ -27,4 +27,5 @@
 ## Libraries
 
 * [Redux](libraries/redux.md)
+* [base64](libraries/base64.md)
 
