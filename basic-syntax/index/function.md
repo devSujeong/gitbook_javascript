@@ -155,3 +155,63 @@ function Circle(radius) {
 }
 ```
 
+## 일급객체
+
+아래 조건을 만족해야 일급 객체라고 부릅니다. 함수는 이 조건을 모두 만족하여 값으로 사용될 수 있으며, 함수가 일급객체라는 것은 자바스크립트가 함수형 프로그래밍이 가능하다는 뜻입니다.
+
+* 런타임에서 생성이 가능합니다. \(리터럴 생성\)
+* 변수나 자료구조\(객체, 배열 등\)에 저장할 수 있습니다.
+* 함수의 매개변수에 전달할 수 있습니다.
+* 함수의 반환값으로 사용할 수 있습니다.
+
+### function property
+
+argument, caller, length, name, prototype: 함수 객체의 데이터 프로퍼티  
+--proto--는 접근자 프로퍼티
+
+* arguments : 함수 호출 시 전달된 argument의 정보를 담고 있는 iterable 유사 배열 객체. 함수 내부에서 지역 변수처럼 사용됨. arguments 프로퍼티는 ES3에서 폐지되었으므로 사용법을 권하지 않고, 함수 내부에서 지역 변수로만 사용하도록 합니다.
+
+  ```javascript
+  function multiply(x, y) {
+      console.log(arguments);
+      return x * y;
+  }
+  ```
+
+* caller : 비표준 프로퍼티. 함수 자신을 호출한 함수를 가리킴.
+
+  ```javascript
+  function bar() {
+      return `caller: ${bar.caller}`;
+  }
+  ```
+
+* length : 함수를 정의할 때 선언한 매개변수의 개수
+* name: 함수 이름. ES6 부터 표준
+
+  ```javascript
+  var bar = function() {};
+  console.log(bar.name);
+  // es5에서는 name property가 빈 문자열
+  // es6에서는 name property가 함수 객체를 가리키는 변수 이름
+  ```
+
+* --proto-- \(\_가 먹히지 않아서 부득이..\)
+
+  \[\[prototype\]\] 내부 슬롯에 직접 접근할 수 없으며 --proto-- 접근자 프로퍼티를 통해 간접적으로 프로토타입 객체에 접근할 수 있습니다.
+
+  ```javascript
+  const obj = {a: 1};
+  obj.hasOwnProperty('a') // true
+  obj.hasOwnProperty('__proto__') // false
+  ```
+
+* prototype 프로퍼티
+
+  함수가 생성자 함수로 호출할 수 있는 것만 prototype 프로퍼티를 가지고 있습니다. prototype 프로퍼티는 인스턴스의 프로토타입 객체를 가리킵니다.
+
+  ```javascript
+  (function () {}).hasOwnProperty('prototype') // true;
+  ({}).hasOwnProperty('prototype') // false
+  ```
+
