@@ -20,9 +20,10 @@
     * [symbol](basic-syntax/index/data-type/symbol.md)
     * [Object](basic-syntax/index/data-type/object.md)
     * [Object: Array](basic-syntax/index/data-type/object-array.md)
+    * [Function](basic-syntax/index/data-type/function.md)
   * [Operator](basic-syntax/index/operator.md)
   * [Control flow statement](basic-syntax/index/control-flow-statement.md)
-  * [Function](basic-syntax/index/function.md)
+  * [Prototype](basic-syntax/index/prototype.md)
 
 ## Libraries
 

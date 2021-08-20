@@ -129,7 +129,7 @@ const add = (x, y) => x + y;
 모든 함수는 callable 함수이지만 생성자 함수는 아무 것이나 될 수 없습니다. 함수 정의 방식에 따라 구분됩니다.
 
 * Constructor: 함수 선언문, 함수 표현식, 클래스\(클래스도 함수\)
-* non-constructor: es6 method, arrow function
+* non-constructor: es6 method, arrow function - prototype internal slot 없
 
 ```javascript
 function foo() {} // 일반 함수 선언문 - constructor function
