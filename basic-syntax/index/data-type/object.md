@@ -85,12 +85,16 @@ const person = {
 
 키는 **value에 접근할 수 있는 이름**입니다. 빈 문자열을 포함하여 **모든 문자열이나 심벌 값을 사용**할 수 있습니다. 문자열이므로 원래는 key를 따옴표로 묶어야 하지만 **식별자 네이밍 규칙을 지킨다면 따옴표를 사용하지 않아도 됩니다**. 키를 동적으로 생성하고 싶다면 `[]`로 묶어서 사용할 수 있습니다. 
 
+hasOwnProperty : 객체의 프로퍼티 키가 **고유한** 프로퍼티 키인지 확인할 때 사용.
+
 ```javascript
 const key = "name";
 
 const obj = {
     [key]: 'Sujeong';    
 };
+
+obj.hasOwnProperty('name')
 ```
 
 ### Property approach
