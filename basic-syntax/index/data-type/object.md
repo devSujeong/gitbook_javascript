@@ -4,10 +4,10 @@
 
 Object를 정의하고 종류를 나누는 표현은 여러 개가 있습니다. 그 용어가 다 다른 것을 의미한다기 보다는 관점에 따라 표현이 다른 것입니다. javascript is Object-based programming. 원시 값을 제외한 모든 값으로써 자바스크립트를 구성하는 거의 모든 것이기도 하고, 원시 값이 아니기에 변경이 가능한 값입니다.
 
-객체는 0개 이상의 프로퍼티로 구성된 집합입니다. **프로퍼티는 key와 value로 구성**됩니다. 함수도 property의 value가 될 수 있는데 이 때는 일반 함수와 구분하기 위해 method라고 부릅니다.
+객체는 속성을 통해 여러 개의 값을 하나의 단위로 구성한 복합적인 자료 구조입니다. 즉, 0개 이상의 프로퍼티로 구성된 집합입니다. **프로퍼티는 key와 value로 구성**됩니다. 함수도 property의 value가 될 수 있는데 이 때는 일반 함수와 구분하기 위해 method라고 부릅니다.
 
-* property: 객체의 상태를 나타내는 값\(data\)
-* method: property를 참조하고 조작할 수 있는 동작\(behavior\)
+* property: 객체의 **상태**를 나타내는 값\(data\)
+* method: property를 참조하고 조작할 수 있는 **동작**\(behavior\)
 
 ```javascript
 const person = {
@@ -36,6 +36,10 @@ const person = {
 * Object literal
 
   간편하지만 인스턴스를 만들 수 없어서 단 하나의 객체만 생성할 수 있습니다.
+
+  ```javascript
+  const person = {};
+  ```
 
 * Object constructor function
 
