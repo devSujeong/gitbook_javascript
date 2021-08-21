@@ -87,7 +87,7 @@ const person = {
 
 ### Key
 
-키는 **value에 접근할 수 있는 이름**입니다. 빈 문자열을 포함하여 **모든 문자열이나 심벌 값을 사용**할 수 있습니다. 문자열이므로 원래는 key를 따옴표로 묶어야 하지만 **식별자 네이밍 규칙을 지킨다면 따옴표를 사용하지 않아도 됩니다**. 키를 동적으로 생성하고 싶다면 `[]`로 묶어서 사용할 수 있습니다. 
+키는 **value에 접근할 수 있는 이름**입니다. 빈 문자열을 포함하여 **모든 문자열이나 심벌 값을 사용**할 수 있습니다. 문자열이므로 원래는 key를 따옴표로 묶어야 하지만 **식별자 네이밍 규칙을 지킨다면 따옴표를 사용하지 않아도 됩니다**. 키를 동적으로 생성하고 싶다면 `[]`로 묶어서 사용할 수 있습니다.
 
 hasOwnProperty : 객체의 프로퍼티 키가 **고유한** 프로퍼티 키인지 확인할 때 사용.
 
@@ -154,7 +154,7 @@ const obj = {
     [`${prefix}-${++i}`]: i,
     [`${prefix}-${++i}`]: i,
     [`${prefix}-${++i}`]: i,
-    
+
     // method shorthand
     print() { 
         console.log(this["prop-1"]);
@@ -168,7 +168,7 @@ consol.log(obj); // {prop-1: 1, prop-2: 2, prop-3: 3}
 
 property attribute를 이해하기 위해서는 먼저 internal slot과 internal method를 알아야 합니다. 이들은 ECMAScript에서 사용하는 pseudo property와 pseudo method입니다. 자바스크립트 엔진의 내부 로직이므로 원칙적으로 개발자가 직접 접근하거나 호출할 수 있는 방법을 제공하지 않지만 일부는 제공합니다.
 
-자바스크립트 엔진은 프로퍼티를 생성할 때 프로퍼티의 상태를 나타내는 프로퍼티 어트리뷰트를 기본 값으로 자동 정의합니다. 
+자바스크립트 엔진은 프로퍼티를 생성할 때 프로퍼티의 상태를 나타내는 프로퍼티 어트리뷰트를 기본 값으로 자동 정의합니다.
 
 * property value
 * property writable\(갱신 가능 여부\)
@@ -205,7 +205,7 @@ const person = {
     // data property
     firstNam: 'sujeong',
     lastName: 'kim',
-    
+
     // accessor property
     get fullName() {
         return `${this.firstName} ${this.lastName}`;
@@ -362,10 +362,8 @@ function deepFreeze(target){
         Object.freeze(target);
         Object.keys(target).forEach(key => deepFreeze(target[key]));
     }
-    
+
     return target;
 }
 ```
-
-
 

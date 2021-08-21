@@ -48,7 +48,7 @@ switch(expression) {
     break;
     default:
         // expression과 일치하는 case문이 없을 때 실행될 문
-        
+
 }
 ```
 
@@ -78,7 +78,7 @@ let count = 0;
 while(true) {
     console.log(count);
     count++;
-    
+
     if (count === 3) break;
 }
 ```

@@ -6,7 +6,7 @@
 
 ## Inheritance
 
-javascript는 prototype을 기반으로 inheritance를 구현합니다. 상속은 코드의 재사용이라는 관점에서 매우 유용합니다. 
+javascript는 prototype을 기반으로 inheritance를 구현합니다. 상속은 코드의 재사용이라는 관점에서 매우 유용합니다.
 
 ```javascript
 function Circle(radius) {
@@ -31,7 +31,7 @@ prototype \(object\)는 어떤 객체의 상위\(부모\) 객체의 역할을 �
 
 모든 객체는 --proto-- 접근자 프로퍼티를 통해 자신의 프로토타입, 즉 \[\[Prototype\]\] 내부 슬롯에 간접적으로 접근할 수 있습니다. 직접 접근하지 않고 --proto--를 사용하는 이유는 상호 참조에 의해 프로토타입 체인이 생성되는 것을 방지하기 위해서 입니다.
 
- --proto-- 프로퍼티는 Object.prototype의 프로퍼티인데 모든 객체는 상속을 통해 --proto--를 사용할 수 있습니다. 그러나 es5까지는 비표준이었고, ES6에서 표준이 되었지만 Object.prototype을 상속받지 않는 객체를 생성할 수도 있기 때문에 해당 접근자 프로퍼티를 코드에서 사용하지 않고 대신 getPrototypeOf, setPrototypeOf 메서드를 사용할 것을 권장합니다.
+--proto-- 프로퍼티는 Object.prototype의 프로퍼티인데 모든 객체는 상속을 통해 --proto--를 사용할 수 있습니다. 그러나 es5까지는 비표준이었고, ES6에서 표준이 되었지만 Object.prototype을 상속받지 않는 객체를 생성할 수도 있기 때문에 해당 접근자 프로퍼티를 코드에서 사용하지 않고 대신 getPrototypeOf, setPrototypeOf 메서드를 사용할 것을 권장합니다.
 
 ```javascript
 const obj = {};
@@ -87,7 +87,6 @@ javascript는 객체의 프로퍼티에 접근하려고 할 때 해당 객체에
 * 스코프 체인 - 식별자 검색을 위한 메커니즘
 
 ## Overriding and property shadowing
-
 프로토 타입이 소유한 프로퍼티를 프로토타입 프로퍼티  
 인스턴스가 소유한 프로퍼티를 인스턴스 프로퍼티라고 합니다.  
 프로토타입 프로퍼티와 같은 이름의 프로퍼티를 인스턴스에도 추가하면 프로토타입 프로퍼티를 덮어쓰는 것이 아니라 인스턴스 프로퍼티로 추가합니다. 이 현상을 오버라이딩한다고 표현하고, 오버라이딩에 의해서 \(상속 관계에 의햇\) 프로퍼티가 가려지는 현상을 property shadowing이라고 합니다.
@@ -202,4 +201,5 @@ function Person(name){
 obj = Object.create(Person.prototype);
 Objct.getPrototypeOf(obj) === Person.prototype // true
 ```
+
 

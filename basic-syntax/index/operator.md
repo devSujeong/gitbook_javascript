@@ -175,7 +175,7 @@ message = done || '미완료';
 
 ```javascript
 let elem = null;
-let value = elem && elem.value; // -> null 
+let value = elem && elem.value; // -> null
 ```
 
 이를 더 쉽게 할 수 있는 연산자가 옵셔널 체이닝 연산자 입니다. 좌항의 피연산자가 null 또는 undefined인 경우 undefined를 반환하고 그렇지 않으면 우항의 프로퍼티 참조를 이어갑니다. 논리 연산자 &&를 사용할 때는 좌항이 falsy값으로 평가되면 그 값이 사용되는 사이드 이펙트가 있는데, 옵셔널 체이닝 연산자는 오직 null, undefined만 바라봅니다.
@@ -184,7 +184,6 @@ let value = elem && elem.value; // -> null
 let elem = null;
 
 let value = elem?.value;
-
 ```
 
 ### nullish coalescing 연산자
@@ -205,6 +204,4 @@ let foo = null ?? 'default string'; // -> 'default string'
 ## new operator
 
 함수와 함께 쓰여 \[\[constructor\]\] internal method호출함.
-
-
 

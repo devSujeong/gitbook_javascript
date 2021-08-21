@@ -17,5 +17,3 @@ atob("d2ViaXNmcmVl");
 btoa(unescape(encodeURIComponent(str))) // encoding이 안될 때(한글이거나 8비트로 문자열이 표현되지 않을 때 변환이 안될 수 있습니다. 그럴 땐 아래처럼 진행)
 ```
 
-
-
