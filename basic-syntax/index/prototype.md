@@ -6,7 +6,7 @@
 
 ## Inheritance
 
-javascript는 prototype을 기반으로 inheritance를 구현합니다. 상속은 코드의 재사용이라는 관점에서 매우 유용합니다. 
+javascript는 prototype을 기반으로 inheritance를 구현합니다. 상속은 코드의 재사용이라는 관점에서 매우 유용합니다.
 
 ```javascript
 function Circle(radius) {
@@ -31,7 +31,7 @@ prototype \(object\)는 어떤 객체의 상위\(부모\) 객체의 역할을 �
 
 모든 객체는 --proto-- 접근자 프로퍼티를 통해 자신의 프로토타입, 즉 \[\[Prototype\]\] 내부 슬롯에 간접적으로 접근할 수 있습니다. 직접 접근하지 않고 --proto--를 사용하는 이유는 상호 참조에 의해 프로토타입 체인이 생성되는 것을 방지하기 위해서 입니다.
 
- --proto-- 프로퍼티는 Object.prototype의 프로퍼티인데 모든 객체는 상속을 통해 --proto--를 사용할 수 있습니다. 그러나 es5까지는 비표준이었고, ES6에서 표준이 되었지만 Object.prototype을 상속받지 않는 객체를 생성할 수도 있기 때문에 해당 접근자 프로퍼티를 코드에서 사용하지 않고 대신 getPrototypeOf, setPrototypeOf 메서드를 사용할 것을 권장합니다.
+--proto-- 프로퍼티는 Object.prototype의 프로퍼티인데 모든 객체는 상속을 통해 --proto--를 사용할 수 있습니다. 그러나 es5까지는 비표준이었고, ES6에서 표준이 되었지만 Object.prototype을 상속받지 않는 객체를 생성할 수도 있기 때문에 해당 접근자 프로퍼티를 코드에서 사용하지 않고 대신 getPrototypeOf, setPrototypeOf 메서드를 사용할 것을 권장합니다.
 
 ```javascript
 const obj = {};
@@ -86,5 +86,5 @@ javascript는 객체의 프로퍼티에 접근하려고 할 때 해당 객체에
 * 프로토타입 체인 - 프로퍼티 검색을 위한 메커니즘
 * 스코프 체인 - 식별자 검색을 위한 메커니즘
 
-## Overriding and property shadowing 
+## Overriding and property shadowing
 

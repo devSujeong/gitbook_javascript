@@ -141,7 +141,7 @@ true + ''; // -> "true"
 
 * Number 생성자 함수를 new연산자 없이 호출
 * parseInt, parseFloat 함수 사용\(문자열만 가능함\)
-* + unary arithmetic operator
+* * unary arithmetic operator
 * \\* arithmetic operator
 
 ```javascript
@@ -198,6 +198,4 @@ Boolean('x'); // -> true
 * 0, -0
 * NaN
 * ''
-
-
 
