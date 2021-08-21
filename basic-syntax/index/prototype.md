@@ -86,5 +86,120 @@ javascript는 객체의 프로퍼티에 접근하려고 할 때 해당 객체에
 * 프로토타입 체인 - 프로퍼티 검색을 위한 메커니즘
 * 스코프 체인 - 식별자 검색을 위한 메커니즘
 
-## Overriding and property shadowing 
+## Overriding and property shadowing
+
+프로토 타입이 소유한 프로퍼티를 프로토타입 프로퍼티  
+인스턴스가 소유한 프로퍼티를 인스턴스 프로퍼티라고 합니다.  
+프로토타입 프로퍼티와 같은 이름의 프로퍼티를 인스턴스에도 추가하면 프로토타입 프로퍼티를 덮어쓰는 것이 아니라 인스턴스 프로퍼티로 추가합니다. 이 현상을 오버라이딩한다고 표현하고, 오버라이딩에 의해서 \(상속 관계에 의햇\) 프로퍼티가 가려지는 현상을 property shadowing이라고 합니다.
+
+재정의하는 것이기 때문에 인스턴스 프로토타입을 삭제해도 프로토타입 프로퍼티는 삭제되지 않습니다.  
+하위 객체가 프로토타입 프로퍼티를 프로토 접근자 프로퍼티로 접근한다 하더라도 삭제할 수 없으며 프로토타입 프로퍼티를 삭제하려면 직접 프로토타입에 접근해야 합니다.
+
+```javascript
+function Person(name) {
+    this.name = name;
+}
+
+Person.prototype.sayHello = function() {
+    console.log(`Hi, My name is ${this.name}`);
+}
+
+const me = new Person('kim sujeong');
+
+delete me.sayHello // error
+delete Person.prototype.sayHello // ok
+```
+
+## Prototype 교체
+
+프로토타입은 임의의 다른 객체로 변경 가능합니다. 동적으로 부모 객체를 바꿀 수 있다는 뜻입니다.
+
+### 생성자 함수에 의한 프로토타입 교체
+
+미래에 생성할 인스턴스의 프로토타입을 교체한다는 뜻입니다.
+
+```javascript
+const Person = (function() {
+    function Person(name){
+        this.name = name;
+    }
+    
+    // Person의 prototype을 객체로 바꿔버림.
+    Person.prototype = {
+        sayHello() {
+            console.log(`Hi, My name is ${this.name}`);
+        }
+    }
+}());
+```
+
+### 인스턴스에 의한 프로토타입 교체
+
+이미 생성된 객체의 프로토타입을 교체하는 것입니다.
+
+```javascript
+function Person(name) {
+    this.name = name;
+}
+
+const me = new Person("sujeong");
+
+const parent = {
+    sayHello() {
+        console.log(`Hi, My name is ${this.name}`);
+    }
+};
+
+// me 객체의 prototype을 parent로 바꿈.
+Object.setPrototypeOf(me, parent);
+me.__proto__ // parent
+```
+
+## instanceOf operator
+
+생성자 함수의 prototype에 바인딩된 객체가 프로토타입 체인 상에 존재하는지 확인합니다.
+
+```javascript
+function Person(name) {
+    this.name = name;
+}
+
+const me = new Person("sujeong");
+
+me instanceOf Person // true
+me instanceOf Object // true
+```
+
+## Object.create 직접 상속
+
+첫 번째 매개변수에 전달한 객체의 프로토타입 체인에 속하는 객체를 생성합니다. 즉, 객체를 생성하면서 직접적으로 상속을 구현하는 것입니다. 이는 아래와 같은 장점이 있습니다.
+
+* new 연산자가 없어도 객체를 생성 할 수 있습니다.
+* 프로토타입을 지정하면서 객체를 생성할 수 있습니다.
+* 객체 리터럴에 의해 생성된 객체도 상속받을 수 있습니다.
+
+그러나 ESLint에서는 Object.prototype 빌트인 메서드를 객체가 직접 호출하는 것을 권장하지 않습니다. Object.create로 만들어진 객체는 Object.prototype을 상속받지 않은 객체도 만들 수 있기 때문입니다.
+
+```javascript
+let obj = Object.create(null);
+Object.getPrototypeOf(obj) === null // true
+
+obj = Object.create(Object.prototype);
+Objct.getPrototypeOf(obj) === Object.prototype // true
+
+obj = Object.create(Object.prototype, {
+    x: {value: 1, writable: true, enumerable: true, configurable: true}
+});
+Object.getPrototypeOf(obj) === Object.prototype // true
+
+const myProto = {x: 10};
+obj = Object.create(myProto);
+Object.getPrototypeOf(obj) === myProto // true
+
+function Person(name){
+    this.name = name;
+}
+obj = Object.create(Person.prototype);
+Objct.getPrototypeOf(obj) === Person.prototype // true
+```
 
