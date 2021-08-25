@@ -24,6 +24,7 @@
   * [Operator](basic-syntax/index/operator.md)
   * [Control flow statement](basic-syntax/index/control-flow-statement.md)
   * [Prototype](basic-syntax/index/prototype.md)
+  * [Built-in Object](basic-syntax/index/built-in-object.md)
 
 ## Libraries
 
