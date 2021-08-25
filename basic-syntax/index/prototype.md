@@ -305,3 +305,18 @@ Objct.entries(person) // [["name", "kim"], ["address", "Seoul"]
 Object.entries(person).forEach(([key, value]) => console.log(key, value));
 ```
 
+## 생성자 함수의 prototype에 접근하는 방법
+
+1\) \[CONSTRUCTOR\].prototype  
+2\) \[instance\].\_\_proto\_\_ -IE 11부터 가능함  
+3\) \[instance\]  
+4\) Object.getPrototypeOf\(\[instance\]\) - 표준
+
+## 생성자 함수에 접근하는 방법
+
+1\) \[CONSTRUCTOR\]  
+2\) \[CONSTRUCTOR\].prototype.constructor  
+3\) \(Object.getPrototypeOf\(\[instance\]\)\).constructor  
+4\) \[instance\].\_\_proto\_\_.constructor - IE 11부터 가능함  
+5\) \[instance\].constructor
+
