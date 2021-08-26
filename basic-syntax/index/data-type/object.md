@@ -31,7 +31,7 @@ const person = {
 * 0개 이상의 property 구성된 집합
 * 클래스와 인스턴스
 
-### Object creation methods
+### Object creation
 
 * Object literal
 
@@ -78,6 +78,16 @@ const person = {
      완성된 인스턴스가 바인딩된 this가 암묵적으로 반환됩니다. 만일 명시적으로 다른 것을 return문에 적으면 명시한 객체가 반환됩니다. \(원시 값 반환하면 원래대로 진행됨\)
 
 * Object.create method
+
+  첫 번째 매개변수에 전달한 객체의 프로토타입 체인에 속하는 객체를 생성합니다. 즉, 객체를 생성하면서 직접적으로 상속을 구현하는 것입니다. 
+
+  * ```javascript
+    function Person(name){
+        this.name = name;
+    }
+    obj = Object.create(Person.prototype);
+    ```
+
 * Class
 
 ## Property
@@ -131,6 +141,16 @@ person.name = "lee";
 person.age = 31; // 존재하지 않는 프로퍼티에 값을 할당하면 동적으로 추가됩니다.
 
 delete person.age; // property delete
+```
+
+### Property delete
+
+```javascript
+const obj = {
+    name: 'sujeong'
+}
+
+delete obj.name
 ```
 
 ### Property expression
@@ -327,7 +347,7 @@ Object.preventExtensions(person)); // 확장 금지
 console.log(Object.isExtensible(person)); // false
 ```
 
-### 객체 밀봉
+### 객체 밀봉\(sealing\)
 
 밀봉된 객체는 읽기와 쓰기만 가능합니다.
 
@@ -340,7 +360,7 @@ Object.seal(person)); // 확장 금지
 console.log(Object.isSealed(person)); // true
 ```
 
-### 객체 동결
+### 객체 동결\(freezing\)
 
 읽기만 가능한 객체입니다.
 
@@ -367,6 +387,10 @@ function deepFreeze(target){
     return target;
 }
 ```
+
+## 객체 복사
+
+Object.assign\(targetObj, sourceObj\); 얕은 복사임. 열거 순서는 지켜짐.
 
 
 

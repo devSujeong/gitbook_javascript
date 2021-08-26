@@ -288,7 +288,7 @@ for(const key in person) {
 
 객체 자신이 가지고 있는\(상속받지 않은\) 프로퍼티만 열거하기 위해서 사용합니다.
 
-* Object.keys : 객체 자신의 열거 가능한 프로퍼티 키를 배열로 반환
+* Object.keys : 객체 자신의 열거 가능한 프로퍼티 키를 배열로 반환. 열거 순서를 지키지 않음 Object.getOwnPropertyNames\(obj\) 는 열거 순서를 엄격히 지킴. Reflect.ownKeys\(obj\) 는 열거 대상이 아닌 심볼까지 볼 수 있고 열거 순서를 지킴
 * Object.values : 객체 자신의 열거 가능한 프로퍼티 값을 배열로 반환
 * Object.entries : 객체 자신의 열거 가능한 프로퍼티 키와 값의 쌍의 배열을 배열로 반환
 
