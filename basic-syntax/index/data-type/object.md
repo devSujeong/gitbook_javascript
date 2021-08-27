@@ -31,7 +31,7 @@ const person = {
 * 0개 이상의 property 구성된 집합
 * 클래스와 인스턴스
 
-### Object creation methods
+### Object creation
 
 * Object literal
 
@@ -78,6 +78,16 @@ const person = {
      완성된 인스턴스가 바인딩된 this가 암묵적으로 반환됩니다. 만일 명시적으로 다른 것을 return문에 적으면 명시한 객체가 반환됩니다. \(원시 값 반환하면 원래대로 진행됨\)
 
 * Object.create method
+
+  첫 번째 매개변수에 전달한 객체의 프로토타입 체인에 속하는 객체를 생성합니다. 즉, 객체를 생성하면서 직접적으로 상속을 구현하는 것입니다. 
+
+  * ```javascript
+    function Person(name){
+        this.name = name;
+    }
+    obj = Object.create(Person.prototype);
+    ```
+
 * Class
 
 ## Property
@@ -131,6 +141,16 @@ person.name = "lee";
 person.age = 31; // 존재하지 않는 프로퍼티에 값을 할당하면 동적으로 추가됩니다.
 
 delete person.age; // property delete
+```
+
+### Property delete
+
+```javascript
+const obj = {
+    name: 'sujeong'
+}
+
+delete obj.name
 ```
 
 ### Property expression
@@ -327,7 +347,7 @@ Object.preventExtensions(person)); // 확장 금지
 console.log(Object.isExtensible(person)); // false
 ```
 
-### 객체 밀봉
+### 객체 밀봉\(sealing\)
 
 밀봉된 객체는 읽기와 쓰기만 가능합니다.
 
@@ -340,7 +360,7 @@ Object.seal(person)); // 확장 금지
 console.log(Object.isSealed(person)); // true
 ```
 
-### 객체 동결
+### 객체 동결\(freezing\)
 
 읽기만 가능한 객체입니다.
 
@@ -366,6 +386,110 @@ function deepFreeze(target){
     
     return target;
 }
+```
+
+## 객체 복사
+
+Object.assign\(targetObj, sourceObj\); 얕은 복사임. 열거 순서는 지켜짐.
+
+## This
+
+this는 자신이 속한 객체 또는 자신이 생성할 인스턴스를 가리키는 자기 참조 변수입니다. this를 통해 자신 속한 객체 또는 자신이 생성할 인스턴스의 프로퍼티나 메서드를 참조할 수 있습니다. this는 어디서나 참조 가능하지만 용도가 객체의 프로퍼티나 메서드를 참조하기 위함이므로 객체의 메서드 내부, 또는 생성자 함수 내부에서만 의미가 있습니다.
+
+### this binding
+
+this 바인딩은 함수 호출 방식에 의해 동적으로 결정됩니다.
+
+#### 일반 함수 호출
+
+기본적으로 this에는 전역 객체가 바인딩됩니다. 단, strict mode에서는 undefined입니다. 일반 함수 호출은 중첩함수, 콜백 함수도 포함됩니다. 그러나 메서드 안에서의 중첩함수, 콜백함수는 객체의 내부 로직을 담당하는 경우가 많은데 그 객체를 참조하지 못하는 것은 문제가 있을 확률이 높습니다. 이 때는 apply/call/bind 메서드를 사용하거나 arrow function으로 this를 일치시킬 수 있습니다.
+
+```javascript
+var value = 1;
+
+const obj = {
+    value: 100,
+    foo() {
+        setTimeout(function() {console.log(this.value)}.bind(this), 100);
+    }
+};
+
+obj.foo();
+```
+
+```javascript
+var value = 1;
+
+const obj = {
+    value: 100,
+    foo() {
+        setTimeout() => console.log(this.value), 100);
+    }
+};
+
+obj.foo();
+```
+
+#### 메서드 호출
+
+메서드 내부의 this에는 메서드를 **호출**한 객체가 바인딩 됩니다. 메서드가 만들어진 객체와 상관이 없고 메서드를 호출하는 객체만을 따라갑니다.
+
+```javascript
+function Person(name) {
+    this.name = name;
+}
+
+Person.prototype.getName = function() {
+    return this.name;
+}
+
+const me = new Person('lee');
+
+me.getName(); // lee
+
+Person.prototype.name = 'kim';
+
+Person.prototype.getName(); // kim
+```
+
+#### 생성자 함수 호출
+
+생성자 함수 **내부**의 this에는 생성자 함수가 \(미래에\) 생성할 인스턴스가 바인딩 됩니다.
+
+### Function.prototype.apply/call/bind
+
+이들은 Function.prototype의 메서드입니다. 즉, 모든 함수가 사용할 수 있습니다.
+
+apply와 call은 인수를 전달하는 방법이 다를 뿐, this를 전달함과 동시에 함수를 호출합니다. 이들은 유사 배열 객체에 배열 메서드를 사용하는 경우에 많이 사용합니다.
+
+```javascript
+Function.prototype.apply(thisArg[, argsArray])
+// thisArg: this로 사용할 객체
+// argsArray: 함수에게 전달할 인수 리스트의 배열 또는 유사 배열 객체
+
+Function.prototype.call(thisArg[, arg1[, arg2[, ...]]])
+// argsArray대신 인자 하나 하나로 인수를 넘김
+```
+
+```javascript
+function convertArgsToArray() {
+    const arr = Array.prototype.slice.call(arguments);
+}
+```
+
+bind는 인수도 전달하지 않고, 함수를 호출하지도 않습니다. this로 사용할 객체만 전달합니다. 따라서 객체 내부의 중첩함수, 콜백함수 등의 this 불일치에 많이 사용됩니다.
+
+```javascript
+const person = {
+    name: 'kim',
+    foo(callback) {
+        setTimeout(callback.bind(this), 100);
+    }
+};
+
+person.foo(function() {
+    console.log(this.name);
+});
 ```
 
 
