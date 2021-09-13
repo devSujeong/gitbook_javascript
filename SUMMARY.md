@@ -32,3 +32,8 @@
 * [Redux](libraries/redux.md)
 * [base64](libraries/base64.md)
 
+## Methods
+
+* [String.prototype](methods/string.prototype.md)
+* [Array.prototype](methods/array.prototype.md)
+
