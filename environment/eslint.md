@@ -12,6 +12,12 @@ settings\(`cmd` + `,`\)에서 아래 내용 작성
 }
 ```
 
+## Creation
+
+```bash
+npx eslint --init
+```
+
 ## eslintrc
 
 {% code title=".eslintrc.js" %}
