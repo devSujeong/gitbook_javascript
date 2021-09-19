@@ -5,6 +5,7 @@
 ## environment
 
 * [background](environment/background/README.md)
+  * [eslint 설정](environment/background/eslint.md)
   * [자바스크립트의 역사](environment/background/history.md)
   * [Scope](environment/background/scope.md)
   * [execution context](environment/background/execution-context.md)
