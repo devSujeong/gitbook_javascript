@@ -48,20 +48,34 @@ module.exports = {
     'react-hooks', 'import', 'jsx-a11y'
   ],
   rules: {
-    'react-hooks/exhaustive-deps': [ 
+    indent: ['error', 2],
+    'linebreak-style': ['error', 'unix'],
+    quotes: [2, 'single', {avoidEscape: true, allowTemplateLiterals: true}],
+    semi: ['error', 'always'],
+    'comma-dangle': ['error', 'never'],
+    'max-len': [
       'error',
       {
-        enableDangerousAutofixThisMayCauseInfiniteLoops: true
-      }
-    ], // react-hook dev dependency 자동 맞춰주기
-    quotes: [2, 'single', { avoidEscape: true, allowTemplateLiterals: true }], // 따옴표 규칙
-    indent: ['error', 2], // 들여쓰기 규칙
-    semi: ['error', 'always'], // 세미콜론 규칙
-    'array-bracket-spacing': ['error', 'never'], // 괄호들의 간격 규칙
-    'space-before-function-paren': ['error', 'never'], // 함수 이름 옆 파라미터 간격 규칙
-    'arrow-parens': ['error', 'always'], // 화살표 함수 디자인 규칙
+        code: 80,
+        ignoreComments: true,
+        ignoreTrailingComments: true,
+        ignoreUrls: true,
+        ignoreStrings: true,
+        ignoreTemplateLiterals: true,
+        ignoreRegExpLiterals: true,
+      },
+    ],
+    'array-bracket-spacing': ['error', 'never'],
+    'space-before-function-paren': ['error', 'never'],
+    'arrow-parens': ['error', 'always'],
     'react/react-in-jsx-scope': 'off',
-    'react-hooks/rules-of-hooks': 'error' // Checks rules of Hooks
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': [
+      'error',
+      {
+        enableDangerousAutofixThisMayCauseInfiniteLoops: true,
+      },
+    ],
   }
 };
 ```
