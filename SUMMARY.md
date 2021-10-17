@@ -28,6 +28,8 @@
   * [Control flow statement](basic-syntax/index/control-flow-statement.md)
   * [Prototype](basic-syntax/index/prototype.md)
   * [Built-in Object](basic-syntax/index/built-in-object.md)
+  * [this](basic-syntax/index/this.md)
+  * [Module](basic-syntax/index/module.md)
 
 ## Libraries
 
@@ -43,4 +45,3 @@
 
 * [regExp](api/regexp.md)
 * [쿠키](api/undefined.md)
-
