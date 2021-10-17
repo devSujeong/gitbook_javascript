@@ -6,8 +6,8 @@ Object를 정의하고 종류를 나누는 표현은 여러 개가 있습니다.
 
 객체는 속성을 통해 여러 개의 값을 하나의 단위로 구성한 복합적인 자료 구조입니다. 즉, 0개 이상의 프로퍼티로 구성된 집합입니다. **프로퍼티는 key와 value로 구성**됩니다. 함수도 property의 value가 될 수 있는데 이 때는 일반 함수와 구분하기 위해 method라고 부릅니다.
 
-* property: 객체의 **상태**를 나타내는 값\(data\)
-* method: property를 참조하고 조작할 수 있는 **동작**\(behavior\)
+* property: 객체의 **상태**를 나타내는 값(data)
+* method: property를 참조하고 조작할 수 있는 **동작**(behavior)
 
 ```javascript
 const person = {
@@ -33,61 +33,55 @@ const person = {
 
 ### Object creation
 
-* Object literal
+*   Object literal
 
-  간편하지만 인스턴스를 만들 수 없어서 단 하나의 객체만 생성할 수 있습니다.
+    간편하지만 인스턴스를 만들 수 없어서 단 하나의 객체만 생성할 수 있습니다.
 
-  ```javascript
-  const person = {};
-  ```
+    ```javascript
+    const person = {};
+    ```
+*   Object constructor function
 
-* Object constructor function
+    여기서 Object는 생성자 함수(constuctor)입니다. 생성자 함수는 new 연산자와 함께 instance객체를 만듭니다.
 
-  여기서 Object는 생성자 함수\(constuctor\)입니다. 생성자 함수는 new 연산자와 함께 instance객체를 만듭니다.
+    ```javascript
+    const person = new Object();
+    ```
+*   constructor function
 
-  ```javascript
-  const person = new Object();
-  ```
+    인스턴스를 생성하기 위한 템플릿처럼 생성자 함수를 사용하여 프로퍼티 구조가 동일한 객체 여러 개를 간편하게 생성할 수 있습니다. 일반 함수와 동일하게 만들고 new 연산자와 함께 호출하면 생성자 함수가 됩니다.
 
-* constructor function
-
-  인스턴스를 생성하기 위한 템플릿처럼 생성자 함수를 사용하여 프로퍼티 구조가 동일한 객체 여러 개를 간편하게 생성할 수 있습니다. 일반 함수와 동일하게 만들고 new 연산자와 함께 호출하면 생성자 함수가 됩니다.
-
-  ```javascript
-  // constructor
-  function Circle(radius) {
-      this.radius = radius;
-      this.getDiameter = function() {
-          return 2 * this.radius;
-      }
-  }
-
-  const circle1 = new Circle(5);
-  ```
-
-  1. 인스턴스 생성과 this 바인딩
-
-     암묵적으로 빈 객체를 만들고 인스턴스는 this에 바인딩됩니다. javascript 영역.
-
-  2. 인스턴스 초기화
-
-     this에 바인딩되어 있는 인스턴스를 초기화합니다. 개발자 영역.
-
-  3. 인스턴스 반환
-
-     완성된 인스턴스가 바인딩된 this가 암묵적으로 반환됩니다. 만일 명시적으로 다른 것을 return문에 적으면 명시한 객체가 반환됩니다. \(원시 값 반환하면 원래대로 진행됨\)
-
-* Object.create method
-
-  첫 번째 매개변수에 전달한 객체의 프로토타입 체인에 속하는 객체를 생성합니다. 즉, 객체를 생성하면서 직접적으로 상속을 구현하는 것입니다. 
-
-  * ```javascript
-    function Person(name){
-        this.name = name;
+    ```javascript
+    // constructor
+    function Circle(radius) {
+        this.radius = radius;
+        this.getDiameter = function() {
+            return 2 * this.radius;
+        }
     }
-    obj = Object.create(Person.prototype);
+
+    const circle1 = new Circle(5);
     ```
 
+    1.  인스턴스 생성과 this 바인딩
+
+        암묵적으로 빈 객체를 만들고 인스턴스는 this에 바인딩됩니다. javascript 영역.
+    2.  인스턴스 초기화
+
+        this에 바인딩되어 있는 인스턴스를 초기화합니다. 개발자 영역.
+    3.  인스턴스 반환
+
+        완성된 인스턴스가 바인딩된 this가 암묵적으로 반환됩니다. 만일 명시적으로 다른 것을 return문에 적으면 명시한 객체가 반환됩니다. (원시 값 반환하면 원래대로 진행됨)
+*   Object.create method
+
+    첫 번째 매개변수에 전달한 객체의 프로토타입 체인에 속하는 객체를 생성합니다. 즉, 객체를 생성하면서 직접적으로 상속을 구현하는 것입니다.
+
+    * ```javascript
+      function Person(name){
+          this.name = name;
+      }
+      obj = Object.create(Person.prototype);
+      ```
 * Class
 
 ## Property
@@ -97,7 +91,7 @@ const person = {
 
 ### Key
 
-키는 **value에 접근할 수 있는 이름**입니다. 빈 문자열을 포함하여 **모든 문자열이나 심벌 값을 사용**할 수 있습니다. 문자열이므로 원래는 key를 따옴표로 묶어야 하지만 **식별자 네이밍 규칙을 지킨다면 따옴표를 사용하지 않아도 됩니다**. 키를 동적으로 생성하고 싶다면 `[]`로 묶어서 사용할 수 있습니다. 
+키는 **value에 접근할 수 있는 이름**입니다. 빈 문자열을 포함하여 **모든 문자열이나 심벌 값을 사용**할 수 있습니다. 문자열이므로 원래는 key를 따옴표로 묶어야 하지만 **식별자 네이밍 규칙을 지킨다면 따옴표를 사용하지 않아도 됩니다**. 키를 동적으로 생성하고 싶다면 `[]`로 묶어서 사용할 수 있습니다.
 
 hasOwnProperty : 객체의 프로퍼티 키가 **고유한** 프로퍼티 키인지 확인할 때 사용.
 
@@ -113,8 +107,8 @@ obj.hasOwnProperty('name')
 
 ### Property approach
 
-* dot notation\(마침표 표기법\)
-* bracket notation\(대괄호 표기법\): 대괄호 내부에 지정하는 프로퍼티 키는 반드시 따옴표로 감싼 문자열이어야 합니다. 또 객체의 프로퍼티 키가 식별자 네이밍 규칙을 지키지 않았을 때에도 접근 가능한 방법입니다.
+* dot notation(마침표 표기법)
+* bracket notation(대괄호 표기법): 대괄호 내부에 지정하는 프로퍼티 키는 반드시 따옴표로 감싼 문자열이어야 합니다. 또 객체의 프로퍼티 키가 식별자 네이밍 규칙을 지키지 않았을 때에도 접근 가능한 방법입니다.
 
 ```javascript
 const person = {
@@ -174,7 +168,7 @@ const obj = {
     [`${prefix}-${++i}`]: i,
     [`${prefix}-${++i}`]: i,
     [`${prefix}-${++i}`]: i,
-    
+
     // method shorthand
     print() { 
         console.log(this["prop-1"]);
@@ -188,12 +182,12 @@ consol.log(obj); // {prop-1: 1, prop-2: 2, prop-3: 3}
 
 property attribute를 이해하기 위해서는 먼저 internal slot과 internal method를 알아야 합니다. 이들은 ECMAScript에서 사용하는 pseudo property와 pseudo method입니다. 자바스크립트 엔진의 내부 로직이므로 원칙적으로 개발자가 직접 접근하거나 호출할 수 있는 방법을 제공하지 않지만 일부는 제공합니다.
 
-자바스크립트 엔진은 프로퍼티를 생성할 때 프로퍼티의 상태를 나타내는 프로퍼티 어트리뷰트를 기본 값으로 자동 정의합니다. 
+자바스크립트 엔진은 프로퍼티를 생성할 때 프로퍼티의 상태를 나타내는 프로퍼티 어트리뷰트를 기본 값으로 자동 정의합니다.
 
 * property value
-* property writable\(갱신 가능 여부\)
-* property enumerable\(열거 가능 여부\)
-* property configurable\(재정의 가능 여부\)
+* property writable(갱신 가능 여부)
+* property enumerable(열거 가능 여부)
+* property configurable(재정의 가능 여부)
 
 ```javascript
 const person = {
@@ -210,22 +204,22 @@ Object.getOwnPropertyDescriptors(person); // 모든 프로퍼티의 attribute �
 ### Property 종류
 
 * data property: 키와 값으로 구성된 일반적인 프로퍼티
-  * \[\[Value\]\] : 프로퍼티 키를 통해 프로퍼티 값에 접근하면 반환되는 값. 프로퍼티 키를 통해 프로퍼티 값을 변경하면 \[\[Value\]\]에 값을 재할당하고 이 때 프로퍼티가 없으면 프로퍼티를 동적 생성하여 값을 저장함.
-  * \[\[Writable\]\] : 프로퍼티 값의 변경 가능 여부 boolean. false면 읽기 전용
-  * \[\[Enumerable\]\] : 프로퍼티의 열거 가능 여부 boolean. false면 반복문 사용 안됨
-  * \[\[Configurable\]\] : 프로퍼티의 재정의 가능 여부 boolean. false면 프로퍼티 삭제, 값 변경 금지. 단 \[\[writable\]\]이 true면 \[\[value\]\] 변경, \[\[writable\]\] false로 변경 허용.
-* accessor property\(접근자 프로퍼티\): 자체적인 값이 없고 다른 데이터 프로퍼티의 값을 읽거나 저장할 때 호출되는  접근자 함수로 구성된 프로퍼티
-  * \[\[Get\]\] : 접근자 프로퍼티를 통해 프로퍼티의 값을 읽을 때 호출되는 접근자 함수. getter 함수가 호출되고 그 결과가 프로퍼티의 값으로 반환됨.
-  * \[\[Set\]\] : 접근자 프로퍼티를 통해 데이터 프로퍼티의 값을 저장할 때 호출되는 접근자 함수.
-  * \[\[Enumerable\]\] : 데이터 프로퍼티와 같음
-  * \[\[Configurable\]\] : 데이터 프로퍼티와 같음
+  * \[\[Value]] : 프로퍼티 키를 통해 프로퍼티 값에 접근하면 반환되는 값. 프로퍼티 키를 통해 프로퍼티 값을 변경하면 \[\[Value]]에 값을 재할당하고 이 때 프로퍼티가 없으면 프로퍼티를 동적 생성하여 값을 저장함.
+  * \[\[Writable]] : 프로퍼티 값의 변경 가능 여부 boolean. false면 읽기 전용
+  * \[\[Enumerable]] : 프로퍼티의 열거 가능 여부 boolean. false면 반복문 사용 안됨
+  * \[\[Configurable]] : 프로퍼티의 재정의 가능 여부 boolean. false면 프로퍼티 삭제, 값 변경 금지. 단 \[\[writable]]이 true면 \[\[value]] 변경, \[\[writable]] false로 변경 허용.
+* accessor property(접근자 프로퍼티): 자체적인 값이 없고 다른 데이터 프로퍼티의 값을 읽거나 저장할 때 호출되는  접근자 함수로 구성된 프로퍼티
+  * \[\[Get]] : 접근자 프로퍼티를 통해 프로퍼티의 값을 읽을 때 호출되는 접근자 함수. getter 함수가 호출되고 그 결과가 프로퍼티의 값으로 반환됨.
+  * \[\[Set]] : 접근자 프로퍼티를 통해 데이터 프로퍼티의 값을 저장할 때 호출되는 접근자 함수.
+  * \[\[Enumerable]] : 데이터 프로퍼티와 같음
+  * \[\[Configurable]] : 데이터 프로퍼티와 같음
 
 ```javascript
 const person = {
     // data property
     firstNam: 'sujeong',
     lastName: 'kim',
-    
+
     // accessor property
     get fullName() {
         return `${this.firstName} ${this.lastName}`;
@@ -275,64 +269,11 @@ Object.defineProperties(person, {
 
 객체는 변경 가능한 값이므로 변경을 방지하기 위한 메서드가 따로 존재합니다. 그러나 이들은 전부 얕은 변경 방지입니다.
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">&#xAD6C;&#xBD84;</th>
-      <th style="text-align:left">&#xBA54;&#xC11C;</th>
-      <th style="text-align:left">
-        <p>&#xD504;&#xB85C;&#xD37C;&#xD2F0;</p>
-        <p>&#xCD94;&#xAC00;</p>
-      </th>
-      <th style="text-align:left">
-        <p>&#xD504;&#xB85C;&#xD37C;&#xD2F0;</p>
-        <p>&#xC0AD;</p>
-      </th>
-      <th style="text-align:left">
-        <p>&#xD504;&#xB85C;&#xD37C;&#xD2F0;</p>
-        <p>&#xAC12; &#xC77D;&#xAE30;</p>
-      </th>
-      <th style="text-align:left">
-        <p>&#xD504;&#xB85C;&#xD37C;&#xD2F0;</p>
-        <p>&#xAC12; &#xC4F0;&#xAE30;</p>
-      </th>
-      <th style="text-align:left">
-        <p>&#xD504;&#xB85C;&#xD37C;&#xD2F0;</p>
-        <p>attribute</p>
-        <p>&#xC7AC;&#xC815;</p>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">&#xAC1D;&#xCCB4; &#xD655;&#xC7A5; &#xAE08;</td>
-      <td style="text-align:left">Object.preventExtensions</td>
-      <td style="text-align:left">X</td>
-      <td style="text-align:left">O</td>
-      <td style="text-align:left">O</td>
-      <td style="text-align:left">O</td>
-      <td style="text-align:left">O</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">&#xAC1D;&#xCCB4; &#xBC00;&#xBD09;</td>
-      <td style="text-align:left">Object.seal</td>
-      <td style="text-align:left">X</td>
-      <td style="text-align:left">X</td>
-      <td style="text-align:left">O</td>
-      <td style="text-align:left">O</td>
-      <td style="text-align:left">X</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">&#xAC1D;&#xCCB4; &#xB3D9;&#xACB0;</td>
-      <td style="text-align:left">Object.freeze</td>
-      <td style="text-align:left">X</td>
-      <td style="text-align:left">X</td>
-      <td style="text-align:left">O</td>
-      <td style="text-align:left">X</td>
-      <td style="text-align:left">X</td>
-    </tr>
-  </tbody>
-</table>
+| 구분      | 메서                       | <p>프로퍼티</p><p>추가</p> | <p>프로퍼티</p><p>삭</p> | <p>프로퍼티</p><p>값 읽기</p> | <p>프로퍼티</p><p>값 쓰기</p> | <p>프로퍼티</p><p>attribute</p><p>재정</p> |
+| ------- | ------------------------ | -------------------- | ------------------- | ---------------------- | ---------------------- | ------------------------------------ |
+| 객체 확장 금 | Object.preventExtensions | X                    | O                   | O                      | O                      | O                                    |
+| 객체 밀봉   | Object.seal              | X                    | X                   | O                      | O                      | X                                    |
+| 객체 동결   | Object.freeze            | X                    | X                   | O                      | X                      | X                                    |
 
 ### 객체 확장 금지
 
@@ -347,7 +288,7 @@ Object.preventExtensions(person)); // 확장 금지
 console.log(Object.isExtensible(person)); // false
 ```
 
-### 객체 밀봉\(sealing\)
+### 객체 밀봉(sealing)
 
 밀봉된 객체는 읽기와 쓰기만 가능합니다.
 
@@ -360,7 +301,7 @@ Object.seal(person)); // 확장 금지
 console.log(Object.isSealed(person)); // true
 ```
 
-### 객체 동결\(freezing\)
+### 객체 동결(freezing)
 
 읽기만 가능한 객체입니다.
 
@@ -383,14 +324,14 @@ function deepFreeze(target){
         Object.freeze(target);
         Object.keys(target).forEach(key => deepFreeze(target[key]));
     }
-    
+
     return target;
 }
 ```
 
 ## 객체 복사
 
-Object.assign\(targetObj, sourceObj\); 얕은 복사임. 열거 순서는 지켜짐.
+Object.assign(targetObj, sourceObj); 얕은 복사임. 열거 순서는 지켜짐.
 
 ## This
 
@@ -454,7 +395,7 @@ Person.prototype.getName(); // kim
 
 #### 생성자 함수 호출
 
-생성자 함수 **내부**의 this에는 생성자 함수가 \(미래에\) 생성할 인스턴스가 바인딩 됩니다.
+생성자 함수 **내부**의 this에는 생성자 함수가 (미래에) 생성할 인스턴스가 바인딩 됩니다.
 
 ### Function.prototype.apply/call/bind
 
@@ -491,6 +432,3 @@ person.foo(function() {
     console.log(this.name);
 });
 ```
-
-
-

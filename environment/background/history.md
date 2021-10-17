@@ -1,14 +1,14 @@
 ---
-description: '자바스크립트의 역사와 큰 줄기를 살펴보면서 흐름을 이해해보고, 핵심 키워드들을 공부해 보자.'
+description: 자바스크립트의 역사와 큰 줄기를 살펴보면서 흐름을 이해해보고, 핵심 키워드들을 공부해 보자.
 ---
 
 # 자바스크립트의 역사
 
 ## Javascript의 시작
 
-넷스케이프 커뮤니케이션즈의 Brendan Eich\(브랜던 아이크\)가 웹페이지의 보조적인 기능을 수행하기 위해 개발.
+넷스케이프 커뮤니케이션즈의 Brendan Eich(브랜던 아이크)가 웹페이지의 보조적인 기능을 수행하기 위해 개발.
 
-Mocha -&gt; LiveScript -&gt; JavaScript
+Mocha -> LiveScript -> JavaScript
 
 ## Javascript 표준화
 
@@ -18,7 +18,7 @@ Mocha -&gt; LiveScript -&gt; JavaScript
 
 ### Before Ajax Communication
 
-![](../../.gitbook/assets/group-1.jpg)
+![](<../../.gitbook/assets/Group 1.jpg>)
 
 * 브라우저에서 요청하면 서버에서 html을 전송해주었습니다.
 * html이 새로 올 때마다 웹페이지 전체가 새로 렌더링되었습니다.
@@ -27,7 +27,7 @@ Mocha -&gt; LiveScript -&gt; JavaScript
 
 ### After Ajax Communication
 
-![](../../.gitbook/assets/group-2.jpg)
+![](<../../.gitbook/assets/Group 2.jpg>)
 
 * html 전체가 아닌 데이터만을 전송할 수 있는 XMLHttpRequest가 만들어졌습니다.
 * 비동기로 Json이나 XML을 주고 받을 수 있어 웹페이지 전체가 새로 렌더링 될 필요가 없습니다.
@@ -47,4 +47,3 @@ v8 엔진으로 빌드된 자바스크립트 런타임 환경입니다. 이는 �
 ## SPA Framework
 
 Ajax 방식으로 새로 렌더링하지 않고 필요한 데이터만 받아오는 것이 가능했지만, 브라우저가 해당 부분만 re-rendering하는 것은 높은 비용이 요구되었습니다. 또한 이전의 개발 방식으로는 데스크탑 애플리케이션 수준의 UX를 요구하는 개발 규모와 복잡도를 수행하기 어려웠기 때문에 이를 해결하기 위해 Component based development 방법론을 기반으로 한 많은 spa 프레임워크들이 등장했습니다.
-
